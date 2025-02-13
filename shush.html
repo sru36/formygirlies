@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #070708;
+            color: #f7f2f8;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .circle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 5s infinite ease-in-out, glow 1.5s infinite alternate;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+            100% { transform: translateY(0) scale(1); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
+            100% { box-shadow: 0 0 20px rgba(255, 255, 255, 1); }
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #96c7fa;
+            border-radius: 20px;
+            box-shadow: 0px 0px 20px #cca4f8;
+            position: relative;
+        }
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #fabaf4;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0px 0px 15px #fabaf4;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #cca4f8;
+            box-shadow: 0px 0px 20px #cca4f8;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-direction: column;
+        }
+        .no-btn {
+            background: #fbfeae;
+            color: #070708;
+            cursor: not-allowed;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .no-btn:hover {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: translate(random(100px), random(100px));
+        }
+        .hidden {
+            display: none;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            .btn-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .container {
+                padding: 15px;
+                width: 90%;
+                margin: 20px auto;
+            }
+            img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            button {
+                font-size: 14px;
+                padding: 8px 14px;
+            }
+            h1 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="circle" style="top: 10%; left: 20%; width: 100px; height: 100px; background: rgba(150, 199, 250, 0.5);"></div>
+        <div class="circle" style="top: 40%; left: 50%; width: 150px; height: 150px; background: rgba(204, 164, 248, 0.5);"></div>
+        <div class="circle" style="top: 70%; left: 30%; width: 80px; height: 80px; background: rgba(250, 186, 244, 0.5);"></div>
+        <div class="circle" style="top: 20%; left: 80%; width: 120px; height: 120px; background: rgba(251, 254, 174, 0.5);"></div>
+        <div class="circle" style="top: 50%; left: 10%; width: 60px; height: 60px; background: rgba(255, 105, 180, 0.5);"></div>
+        <div class="circle" style="top: 30%; left: 80%; width: 200px; height: 200px; background: rgba(255, 228, 181, 0.5);"></div>
+    </div>
+    <div class="container" id="page1">
+        <h1>Hey there! I have a question for you... 💌</h1>
+        <img src="minecraft lake.jpg" alt="image" style="width: 100%; height: auto; margin-bottom: 20px;">
+        <button onclick="nextPage('page1', 'page2')">Next</button>
+    </div>
+    
+    <div class="container hidden" id="page2">
+        <h1>It's really important! Ready? ❤️</h1>
+        <img src="tom.jpg" alt="image" class="image">
+        <div class="btn-group">
+            <button onclick="nextPage('page2', 'page3')">Yes!</button>
+            <button class="no-btn">No</button>
+        </div>
+    </div>
+    
+    <div class="container hidden" id="page3">
+        <h1>This will end up giving you butterflies 🦋💖 Are you up for them? 😊</h1>
+        <img src="smile.jpg" alt="image" width="200" height="200" margin-bottom="20px">
+        <div class="btn-group">
+            <button onclick="nextPage('page3', 'page4')">Yes!</button>
+            <button class="no-btn">No</button>
+        </div>
+    </div>
+    
+    <div class="container hidden" id="page4">
+        <h1>Will you be my Valentine? 💘</h1>
+        <img src="bs.jpg" alt="image" class="image">
+        <div class="btn-group">
+            <button onclick="nextPage('page4', 'formPage')">Yes! 💘</button>
+            <button class="no-btn">No</button>
+        </div>
+    </div>
+    
+    <div class="container hidden" id="formPage">
+        <h1>Yay! Just one more thing 😊</h1>
+        <form id="valentineForm">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <button type="submit">GO 🚀</button>
+        </form>
+    </div>
+    
+    <script>
+        function nextPage(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
+        }
+        
+        document.querySelectorAll('.no-btn').forEach(button => {
+            button.addEventListener('mouseover', function() {
+                this.style.top = Math.random() * window.innerHeight + 'px';
+                this.style.left = Math.random() * window.innerWidth + 'px';
+            });
+        });
+        
+        document.getElementById("valentineForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let userName = document.getElementById("name").value;
+            
+            let mailtoLink = `mailto:ni.sweet.y2@gmail.com?subject=Valentine's Response&body=Someone named ${userName} has accepted your Valentine request! ❤️`;
+            window.location.href = mailtoLink;
+            
+            alert("Love you silly!!!! 💖🥰");
+        });
+        const circles = document.querySelectorAll('.circle');
+        setInterval(() => {
+            circles.forEach(circle => {
+                const randomX = Math.random() * window.innerWidth;
+                const randomY = Math.random() * window.innerHeight;
+                circle.style.top = randomY + 'px';
+                circle.style.left = randomX + 'px';
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
